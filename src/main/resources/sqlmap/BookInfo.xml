@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="bookInfo">
+	<!-- 別名 -->
+	<typeAlias alias="bookInfo" type="jp.co.sji.edu.fb.common.dto.BookInfo" />
+	<typeAlias alias="b0202Dto" type="jp.co.sji.edu.fb.dto.B0202Dto" />
+	<typeAlias alias="condDto" type="jp.co.sji.edu.fb.dto.B0201CondDto" />
+	<typeAlias alias="condDto3" type="jp.co.sji.edu.fb.dto.B0301CondDto" />
+
+	<!-- 入力条件より、データを検索する -->
+	<select id="selectBooksB3" parameterClass="condDto3"
+		resultClass="BookInfo">
+		SELECT
+		BOOKID ,
+		CATEGORYID ,
+		BOOKTITLE ,
+		BOOKCOVER ,
+		REGDATE ,
+		LASTUPDATE
+		FROM
+		BOOKINFO
+		WHERE 1=1
+		<isNotEmpty property="bookTitle" prepend="AND">
+			BOOKTITLE LIKE
+			'%$bookTitle$%'
+		</isNotEmpty>
+		<isNotEmpty property="categoryID" prepend="AND">
+			CATEGORYID =
+			#categoryID#
+		</isNotEmpty>
+		ORDER BY
+		BOOKID ASC
+	</select>
+
+	<!-- 入力条件より、データを検索する -->
+	<select id="selectBookByID" parameterClass="String" resultClass="bookInfo">
+		SELECT
+		BOOKID ,
+		CATEGORYID ,
+		BOOKTITLE ,
+		AUTHOR ,
+		PUBLISHER ,
+		DESCRIPTION ,
+		COVERIMGID ,
+		REGDATE ,
+		LASTUPDATE
+		FROM
+		BOOKINFO
+		WHERE
+		BOOKID = #bookID#
+	</select>
+
+	<!-- 入力条件より、データを検索する -->
+	<select id="selectBooks" parameterClass="condDto" resultClass="BookInfo">
+		SELECT
+		BOOKID ,
+		CATEGORYID ,
+		BOOKTITLE ,
+		AUTHOR ,
+		PUBLISHER ,
+		DESCRIPTION ,
+		COVERIMGID ,
+		REGDATE ,
+		LASTUPDATE
+		FROM
+		BOOKINFO
+		WHERE 1=1
+		<isNotEmpty property="bookTitle" prepend="AND">
+			BOOKTITLE LIKE
+			'%$bookTitle$%'
+		</isNotEmpty>
+		<isNotEmpty property="categoryID" prepend="AND">
+			CATEGORYID =
+			#categoryID#
+		</isNotEmpty>
+		ORDER BY
+		BOOKID ASC
+	</select>
+
+	<!-- スライドショー用データを検索する -->
+<!-- 	<select id="selectShBooks" parameterClass="shCondDto"
+		resultClass="BookInfo">
+		SELECT BOOKID , CATEGORYID , BOOKTITLE , AUTHOR , PUBLISHER ,
+		DESCRIPTION
+		, COVERIMGID , REGDATE , LASTUPDATE FROM BOOKINFO WHERE 1=1
+		<isNotEmpty property="categoryID" prepend="AND"> CATEGORYID =
+			#categoryID# </isNotEmpty>
+		ORDER BY BOOKID ASC
+	</select>- -->
+
+	<update id="updateBook" parameterClass="b0202Dto">
+		UPDATE BOOKINFO
+		SET
+		CATEGORYID = #categoryID#,
+		BOOKTITLE = #bookTitle#,
+		<isNotEmpty property="author" prepend="">
+			AUTHOR = #author#,
+		</isNotEmpty>
+		<isNotEmpty property="publisher" prepend="">
+			PUBLISHER =
+			#publisher#,
+		</isNotEmpty>
+		<isNotEmpty property="description" prepend="">
+			DESCRIPTION =
+			#description#,
+		</isNotEmpty>
+		<isNotEmpty property="coverImgID" prepend="">
+			COVERIMGID =
+			#coverImgID#,
+		</isNotEmpty>
+		<isNotEmpty property="regDate" prepend="">
+			REGDATE = #regDate#,
+		</isNotEmpty>
+		LASTUPDATE = sysdate
+		WHERE
+		BOOKID = #bookID#
+		AND LASTUPDATE =
+		#lastUpdate#
+	</update>
+
+	<delete id="deleteBook" parameterClass="b0202Dto">
+		DELETE FROM BOOKINFO
+		WHERE
+		BOOKID = #bookID#
+	</delete>
+
+	<!-- User情報を更新する -->
+	<insert id="insertBook" parameterClass="b0202Dto">
+  	<![CDATA[
+		INSERT INTO BOOKINFO (
+			BOOKID ,
+			CATEGORYID ,
+  			BOOKTITLE ,
+  			AUTHOR ,
+  			PUBLISHER ,
+  			DESCRIPTION ,
+  			COVERIMGID ,
+  			REGDATE ,
+  			LASTUPDATE
+		) VALUES(
+			#bookID#,
+			#categoryID#,
+			#bookTitle#,
+			#author#,
+			#publisher#,
+			#description#,
+			#coverImgID#,
+			#regDate#,
+			sysdate
+		)
+    ]]>
+	</insert>
+
+</sqlMap>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="userInfo">
+
+	<!-- 別名 -->
+	<typeAlias alias="userInfo" type="jp.co.sji.edu.fb.common.dto.UserInfo" />
+	<typeAlias alias="p0101CondDto" type="jp.co.sji.edu.fb.dto.P0101CondDto" />
+	<typeAlias alias="s0101Dto" type="jp.co.sji.edu.fb.dto.S0101Dto" />
+	
+	<insert id="insert" parameterClass="userInfo">
+		INSERT INTO (
+		LOGINID,
+		PASSWORD1,
+		PASSWORD2,
+		PASSWORD3,
+		PASSWORD4,
+		PASSWORD5,
+		PWDCHANGEDATE,
+		USERTYPE,
+		USERNAME,
+		EMAIL,
+		ADDRESS,
+		CITY,
+		STATE,
+		COUNTRY,
+		ZIP,
+		TELEPHONE,
+		FAX,
+		WEBSITE,
+		STATUS,
+		REMARK,
+		LASTUPDATE
+		) VALUES (
+		#loginID#,
+		#password1#,
+		#password2#,
+		#password3#,
+		#password4#,
+		#password5#,
+		#pwdChangeDate#,
+		#userType#,
+		#userName#,
+		#email#,
+		#address#,
+		#city#,
+		#state#,
+		#country#,
+		#zip#,
+		#telephone#,
+		#fax#,
+		#webSite#,
+		#status#,
+		#remark#,
+		#lastUpdate#
+		)
+	</insert>
+
+	<!-- 入力条件より、データを検索する -->
+	<select id="selectUsers" parameterClass="p0101CondDto"
+		resultClass="userInfo">
+		SELECT
+			LOGINID,
+			USERNAME,
+			USERTYPE,
+			STATUS,
+			LASTUPDATE
+		FROM USERINFO
+		WHERE 1 = 1
+			<isNotEmpty property="name" prepend="AND">
+				USERNAME LIKE
+				'%$name$%'
+			</isNotEmpty>
+			<isNotEmpty property="loginID" prepend="AND">
+				LOGINID = #loginID#
+			</isNotEmpty>
+			<isNotEmpty property="type" prepend="AND">
+				USERTYPE = #type#
+			</isNotEmpty>
+			<isNotEmpty property="status" prepend="AND">
+				STATUS = #status#
+			</isNotEmpty>
+			ORDER BY
+			USERTYPE,
+			lower(USERNAME) ASC
+	</select>
+
+	<!-- LoginIDより、データを検索する -->
+	<select id="selectUserByLoginID" parameterClass="String"
+		resultClass="userInfo">
+		SELECT
+			LOGINID,
+			USERNAME,
+            USERTYPE,
+			PASSWORD1,
+			PWDCHANGEDATE,
+			EMAIL,
+			ADDRESS,
+			CITY,
+			STATE,
+			COUNTRY,
+			ZIP,
+			TELEPHONE,
+			FAX,
+			STATUS,
+			REMARK,
+			LASTUPDATE
+		FROM USERINFO
+		WHERE
+			LOGINID = #loginID#
+			AND STATUS = '1'
+	</select>
+  
+    <!-- LoginIDより、データを検索する(Status不問) -->
+    <select id="selectAllUserByLoginID" parameterClass="String"
+        resultClass="userInfo">
+        SELECT
+            LOGINID,
+            USERNAME,
+            USERTYPE,
+            PASSWORD1,
+            EMAIL,
+            ADDRESS,
+            CITY,
+            STATE,
+            COUNTRY,
+            ZIP,
+            TELEPHONE,
+            FAX,
+            STATUS,
+            REMARK,
+            LASTUPDATE
+        FROM USERINFO
+        WHERE
+            LOGINID = #loginID#
+    </select>
+
+	<select id="selectEmail" parameterClass="String" resultClass="userInfo">
+		SELECT
+		LOGINID,
+		EMAIL,
+		LASTUPDATE
+		FROM USERINFO
+		WHERE
+		LOGINID = #loginID#
+	</select>
+
+	<update id="updateEmail" parameterClass="userInfo">
+		UPDATE USERINFO
+		SET
+		EMAIL
+		= #email#,
+		LASTUPDATe = sysdate
+		WHERE
+		LOGINID = #loginID#
+		AND LASTUPDATE =
+		#lastUpdate#
+	</update>
+
+	<select id="selectOperatorTeam" resultClass="userInfo">
+		SELECT
+		LOGINID,
+		USERNAME
+		FROM USERINFO
+		WHERE
+		USERTYPE = '1'
+		AND STATUS = '1'
+		ORDER BY
+		lower(USERNAME) ASC
+	</select>
+
+	<select id="selectLoginInfo" parameterClass="userInfo"
+		resultClass="userInfo">
+		SELECT
+			LOGINID,
+			PASSWORD1,
+			PWDCHANGEDATE,
+			EMAIL,
+			USERTYPE,
+			USERNAME
+		FROM USERINFO
+		WHERE
+			(LOGINID = #loginID#
+			OR USERTYPE = '0')
+			AND
+			STATUS = '1'
+	</select>
+
+	<!-- SiteManager情報を検索する -->
+	<select id="selectSiteManager" resultClass="userInfo">
+		SELECT
+		LOGINID,
+		USERNAME,
+		EMAIL
+		FROM USERINFO
+		WHERE
+		USERTYPE = '0'
+	</select>
+	<!-- Change Password情報を検索する -->
+	<select id="selectPassword" parameterClass="String" resultClass="userInfo">
+		SELECT
+			LOGINID,
+			PASSWORD1,
+			PASSWORD2,
+			PASSWORD3,
+			PASSWORD4,
+			PASSWORD5
+		FROM
+			USERINFO
+		WHERE
+			(LOGINID = #loginID#
+			OR USERTYPE = '0')
+			AND STATUS = '1'
+	</select>
+	<!-- Change Password -->
+	<update id="updatePassword" parameterClass="userInfo">
+	UPDATE USERINFO
+		SET
+			PASSWORD1 = #password1#,
+			PASSWORD2 = #password2#,
+			PASSWORD3 = #password3#,
+			PASSWORD4 = #password4#,
+			PASSWORD5 = #password5#,
+			PWDCHANGEDATE = #pwdChangeDate#,
+			LASTUPDATE = sysdate
+		WHERE
+			LOGINID = #loginID#
+	</update>
+	<!-- MOL User 情報を検索する -->
+	<select id="selectMolUser" resultClass="userInfo">
+	  SELECT
+			LOGINID,
+			PASSWORD1,
+			USERTYPE,
+			USERNAME,
+			STATUS,
+			EMAIL,
+			LASTUPDATE
+			FROM USERINFO
+	WHERE 1 = 1
+			<isNotEmpty property="loginID" prepend="AND">
+				LOGINID = #loginID#
+			</isNotEmpty>
+	ORDER BY
+			lower(LOGINID) ASC
+	</select>
+
+	<!-- Supplier 情報を検索する -->
+	<select id="selectSuppUser" resultClass="userInfo">
+	SELECT
+		LOGINID,
+		PASSWORD1,
+		PASSWORD2,
+		PASSWORD3,
+		PASSWORD4,
+		PASSWORD5,
+		PWDCHANGEDATE,
+		USERTYPE,
+		USERNAME,
+		EMAIL,
+		ADDRESS,
+		CITY,
+		STATE,
+		COUNTRY,
+		ZIP,
+		TELEPHONE,
+		FAX,
+		STATUS,
+		REMARK,
+		LASTUPDATE
+	FROM USERINFO
+	WHERE USERTYPE = '3'
+	ORDER BY
+		lower(USERNAME) ASC
+	</select>
+  
+    <!-- Supplier 情報を検索する (ドロップダウン用)-->
+    <select id="selectSuppUserForDrp" resultClass="userInfo">
+    SELECT
+        LOGINID,
+        USERNAME
+    FROM USERINFO
+    WHERE USERTYPE = '3'
+    ORDER BY
+        lower(USERNAME) ASC
+    </select>
+
+	<!-- User情報を更新する -->
+	<insert id="insertUser" parameterClass="s0101Dto">
+  <![CDATA[INSERT INTO USERINFO(
+				LOGINID,
+                USERNAME,
+                USERTYPE,
+                PASSWORD1,
+                EMAIL,
+                STATUS,
+                PWDCHANGEDATE,
+                LASTUPDATE
+        ) VALUES (
+                #loginID#,
+                #userName#,
+                #userType#,
+                #password#,
+                #email#,
+                #status#,
+                sysdate,
+                sysdate
+                )]]>
+	</insert>
+	
+	<!--User情報を登録する -->
+	<update id="updateUser" parameterClass="s0101Dto">
+	 UPDATE USERINFO
+		SET
+			<isNotEmpty property="status" prepend="">
+			STATUS = #status#,
+			</isNotEmpty>
+			<isNotEmpty property="userType" prepend="">
+			USERTYPE = #userType#,
+			</isNotEmpty>
+			USERNAME = #userName#,
+			<isNotEmpty property="password" prepend="">
+			PASSWORD1 = #password#,
+			</isNotEmpty>
+			<isNotEmpty property="email" prepend="">
+			EMAIL = #email#,
+			</isNotEmpty>
+			LASTUPDATE = sysdate
+		WHERE
+			LOGINID = #loginID#
+			AND LASTUPDATE = #lastUpdate#
+	</update>
+
+	<select id="selectUserType" parameterClass="String" resultClass="userInfo">
+        SELECT
+            LOGINID,
+            USERTYPE
+        FROM 
+            USERINFO
+        WHERE
+            LOGINID = #loginID#
+    </select>
+    <!--LOGINID情報を登録する -->
+	<select id="selectSupplier" parameterClass="String" resultClass="userInfo">
+		SELECT
+			LOGINID
+		FROM USERINFO
+			WHERE
+			LOGINID = #loginID#
+		 ORDER BY 
+		 	lower(LOGINID) ASC
+	</select>
+	
+	<!-- LoginIDより、データを検索する -->
+	<select id="selectUserLoginID" parameterClass="String"
+		resultClass="userInfo">
+		SELECT
+			LOGINID,
+			USERNAME,
+			PASSWORD1,
+			EMAIL,
+			ADDRESS,
+			CITY,
+			STATE,
+			COUNTRY,
+			ZIP,
+			TELEPHONE,
+			FAX,
+			STATUS,
+			REMARK,
+			LASTUPDATE
+		FROM USERINFO
+		WHERE
+		LOGINID = #loginID#
+	</select>
+	
+	
+	
+</sqlMap>

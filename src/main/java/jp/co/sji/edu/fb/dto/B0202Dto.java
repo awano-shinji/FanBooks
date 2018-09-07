@@ -27,7 +27,7 @@ public class B0202Dto extends BaseDto {
      * modeType
      */
     private String modeType;
-    
+
     /**
      * BookID
      */
@@ -37,7 +37,8 @@ public class B0202Dto extends BaseDto {
      * CategoryID
      */
     private String categoryID;
-    
+
+    private String bookCover;
     /**
      * BookTitle
      */
@@ -47,14 +48,14 @@ public class B0202Dto extends BaseDto {
      * Author
      */
     private String author;
-    
+
     /**
      * Publisher
      */
     private String publisher;
-    
+
     /**
-     * Description 
+     * Description
      */
     private String description ;
 
@@ -72,23 +73,23 @@ public class B0202Dto extends BaseDto {
      * RegDate
      */
     private Date regDate;
-        
+
     /**
      * LastUpdate
      */
     private Timestamp lastUpdate;
-        
+
 	/**
      * CategoryList
      */
     private List<CodeMasterInfo> categoryList;
-	
+
     /**
      * MultipartFile
      */
     private MultipartFile mpFile;
-    
-    
+
+
     public List<CodeMasterInfo> getCategoryList() {
 		return categoryList;
 	}
@@ -194,6 +195,16 @@ public class B0202Dto extends BaseDto {
 		this.mpFile = mpFile;
 	}
 
-    
+	public String getBookCover() {
+		return bookCover;
+	}
+
+	public void setBookCover(String bookCover) {
+		this.bookCover = bookCover;
+	}
+
+
+
+
 }
 

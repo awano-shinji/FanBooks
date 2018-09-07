@@ -28,8 +28,8 @@ public interface FileService {
      * <p>[詳 細] </p>
      * <p>[備 考] </p>
      * @param String fileID
-     * @return 
+     * @return
      */
     void deleteFile(String fileID, String contentPath);
-    
+
 }

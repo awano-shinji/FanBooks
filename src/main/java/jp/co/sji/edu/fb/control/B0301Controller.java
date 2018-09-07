@@ -73,4 +73,58 @@ public class B0301Controller extends AbstractBaseController {
 				Constants.CD_GROUP_VESSELTYPE, Constants.DRP_EMPTY_BLANK);
 		b0301CondDto.setCategoryList(categoryList);
 	}
+
+	 /**
+     * <p>[概 要] ブック情報の検索処理。</p>
+     * <p>[詳 細] </p>
+     * <p>[備 考] </p>
+     * @param b0301Dto ユーザ対象
+     * @param model データモデル
+     * @param session セッション
+     * @return 遷移先
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/search")
+    public String processSearch(B0301Dto b0301Dto,
+            Model model, HttpSession session) {
+        B0301CondDto b0301CondDto = b0301Dto.getCondDto();
+        // DropDownを初期化する
+        initDropdown(b0301CondDto);
+        // Book情報の検索処理
+        List<B0301ResultDto> bookList = b0301Service.getInitInfo(b0301CondDto);
+   	   	session.setAttribute(Constants.SESSION_B0301_COND, b0301Dto);
+    	model.addAttribute("searchResult", bookList);
+        return "b0301";
+    }
+
+    /**
+     * <p>[概 要] 画面初期化情報の取得処理(子画面Back時の初期化処理)。</p>
+     * <p>[詳 細] </p>
+     * <p>[備 考] </p>
+     * @param model データモデル
+     * @param session セッション
+     * @return 遷移先
+     */
+    @RequestMapping(value = "/back")
+    public String processBack(Model model, HttpSession session) {
+
+    	B0301Dto b0301Dto = new B0301Dto();
+    	B0301Dto searchDto = new B0301Dto();
+    	// 検索一覧の情報を回復する。
+    	if(null != session.getAttribute(Constants.SESSION_B0301_LIST)) {
+    		b0301Dto = (B0301Dto) session.getAttribute(Constants.SESSION_B0301_LIST);
+    	}
+
+    	if(null != session.getAttribute(Constants.SESSION_B0301_COND)) {
+    		searchDto = (B0301Dto) session.getAttribute(Constants.SESSION_B0301_COND);
+    	}
+    	model.addAttribute(b0301Dto);
+    	// DropDownを初期化する
+    	initDropdown(b0301Dto.getCondDto());
+    	// 一覧情報を取得する
+    	List<B0301ResultDto> bookList = b0301Service.getInitInfo(searchDto.getCondDto());
+    	model.addAttribute("searchResult", bookList);
+
+    	return "b0301";
+
+    }
 }

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="commonPage" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="check" value="/WEB-INF/jsp/check.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp" />
+	</definition>
+
+
+    <definition name="historyPage" template="/WEB-INF/jsp/template_history.jsp">
+        <put-attribute name="check" value="/WEB-INF/jsp/check.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp" />
+    </definition>
+
+	<definition name="commonPopup" template="/WEB-INF/jsp/templatePopup.jsp">
+		<put-attribute name="check" value="/WEB-INF/jsp/check.jsp" />
+	</definition>
+
+	<definition name="login" template="/WEB-INF/jsp/login.jsp">
+	</definition>
+
+	<definition name="siteManagerCommon" extends="commonPage">
+	</definition>
+
+	<definition name="operatorCommon" extends="commonPage">
+	</definition>
+
+	<definition name="fanBkCommon" extends="commonPage">
+	</definition>
+
+	<definition name="supplierCommon" extends="commonPage">
+	</definition>
+
+    <definition name="error" extends="commonPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/error.jsp" />
+    </definition>
+
+    <definition name="errorPopup" extends="commonPopup">
+        <put-attribute name="body" value="/WEB-INF/jsp/error.jsp" />
+    </definition>
+
+    <definition name="tokenError" extends="commonPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/tokenError.jsp" />
+    </definition>
+
+	<!-- ######################Popup Begin###################### -->
+	<definition name="l0101" extends="commonPopup">
+		<put-attribute name="body" value="/WEB-INF/jsp/l0101.jsp" />
+	</definition>
+
+	<definition name="viewComment" extends="commonPopup">
+		<put-attribute name="body" value="/WEB-INF/jsp/viewComment.jsp" />
+	</definition>
+
+	<definition name="s1001" extends="commonPopup">
+		<put-attribute name="body" value="/WEB-INF/jsp/s1001.jsp" />
+	</definition>
+
+	<!-- ######################Popup END####################### -->
+
+	<!-- ######################SiteManager Begin###################### -->
+	<!-- Homepage -->
+	<definition name="p0101A" extends="siteManagerCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/p0101.jsp" />
+	</definition>
+
+	<!-- Change Password -->
+	<definition name="s1001A" extends="siteManagerCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/s1001.jsp" />
+	</definition>
+
+	<!-- Keeper User -->
+	<definition name="s0101A" extends="siteManagerCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/s0101.jsp" />
+	</definition>
+
+	<!-- ######################SiteManager END####################### -->
+
+	<!-- ######################Operator Begin###################### -->
+
+	<!-- Change Password -->
+	<definition name="s1001O" extends="operatorCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/s1001.jsp" />
+	</definition>
+
+	<!-- My Profile -->
+	<definition name="s0101O" extends="operatorCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/s0101.jsp" />
+	</definition>
+
+	<!-- ######################Operator END####################### -->
+
+	<!-- ######################Keeper Begin -->
+	<!-- Change Password -->
+	<definition name="s1001B" extends="fanBkCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/s1001.jsp" />
+	</definition>
+
+	<!-- My Profile -->
+	<definition name="s0101B" extends="fanBkCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/s0101.jsp" />
+	</definition>
+
+	<!-- ######################Keeper END###################### -->
+
+	<!-- ######################Supplier Begin###################### -->
+	<!-- Change Password -->
+	<definition name="s1001S" extends="supplierCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/s1001.jsp" />
+	</definition>
+
+	<!-- ######################Supplier END###################### -->
+
+	<!-- ###################### Edu.SJI New Pages ###################### -->
+
+    <!-- New JSP -->
+    <!-- Homepage for Reader -->
+	<definition name="b0101O" extends="siteManagerCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/b0101.jsp" />
+	</definition>
+
+	<definition name="b0102O" extends="siteManagerCommon">
+	<put-attribute name="body" value="/WEB-INF/jsp/b0102.jsp" />
+	</definition>
+
+	<!-- Homepage for Book Keeper -->
+	<definition name="b0201B" extends="siteManagerCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/b0201.jsp" />
+	</definition>
+
+	<!-- Doc Register for Book Keeper -->
+	<definition name="b0202B" extends="fanBkCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/b0202.jsp" />
+	</definition>
+
+	<!-- Homepage for Book Keeper -->
+	<definition name="b0301B" extends="siteManagerCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/b0301.jsp" />
+	</definition>
+
+	<definition name="b0302B" extends="fanBkCommon">
+		<put-attribute name="body" value="/WEB-INF/jsp/b0302.jsp" />
+	</definition>
+
+</tiles-definitions>

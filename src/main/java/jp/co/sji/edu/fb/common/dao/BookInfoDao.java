@@ -7,6 +7,7 @@ import jp.co.sji.edu.fb.dto.B0101CondDto;
 import jp.co.sji.edu.fb.dto.B0201CondDto;
 import jp.co.sji.edu.fb.dto.B0202Dto;
 import jp.co.sji.edu.fb.dto.B0301CondDto;
+import jp.co.sji.edu.fb.dto.B0302Dto;
 
 
 /**
@@ -26,6 +27,15 @@ public interface BookInfoDao {
      * @return
      */
     void insertBook(B0202Dto b0202Dto);
+
+    /**
+     * <p>[概 要] BookInfo情報を登録する。</p>
+     * <p>[詳 細] </p>
+     * <p>[備 考] </p>
+     * @param B0302Dto b0302Dto情報
+     * @return
+     */
+    void insertBooks(B0302Dto b0302Dto);
 
     /**
      * <p>[概 要] 条件を絞り込みBook情報を検索する。</p>
@@ -63,6 +73,8 @@ public interface BookInfoDao {
      */
     BookInfo selectBookByID(String bookID);
 
+
+
     /**
      * <p>[概 要] bookIDを条件に１件のBookを更新する</p>
      * <p>[詳 細] </p>
@@ -73,6 +85,15 @@ public interface BookInfoDao {
     int updateBook(B0202Dto b0202Dto);
 
     /**
+     * <p>[概 要] 資料一覧のbookIDを条件に１件のBookを更新する</p>
+     * <p>[詳 細] </p>
+     * <p>[備 考] </p>
+     * @param B0302Dto b0302Dto
+     * @return BookInfo 情報
+     */
+    int updateBooks(B0302Dto b0302Dto);
+
+    /**
      * <p>[概 要] bookIDを条件に１件のBookを削除する</p>
      * <p>[詳 細] </p>
      * <p>[備 考] </p>
@@ -80,6 +101,16 @@ public interface BookInfoDao {
      * @return BookInfo 情報
      */
     int deleteBook(B0202Dto b0202Dto);
+
+
+    /**
+     * <p>[概 要] 資料一覧のbookIDを条件に１件のBookを削除する</p>
+     * <p>[詳 細] </p>
+     * <p>[備 考] </p>
+     * @param B0302Dto b0302Dto
+     * @return BookInfo 情報
+     */
+    int deleteBooks(B0302Dto b0302Dto);
 
   }
 

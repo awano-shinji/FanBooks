@@ -9,6 +9,7 @@ import jp.co.sji.edu.fb.dto.B0101CondDto;
 import jp.co.sji.edu.fb.dto.B0201CondDto;
 import jp.co.sji.edu.fb.dto.B0202Dto;
 import jp.co.sji.edu.fb.dto.B0301CondDto;
+import jp.co.sji.edu.fb.dto.B0302Dto;
 
 /**
  * <p>[概 要] UserInfoのDAOのクラス。</p>
@@ -28,6 +29,10 @@ public class BookInfoDaoImpl extends BaseDao implements BookInfoDao  {
      */
     public void insertBook(B0202Dto b0202Dto){
         insert("bookInfo.insertBook", b0202Dto);
+    }
+
+    public void insertBooks(B0302Dto b0302Dto) {
+    	insert("bookInfo.insertBooks", b0302Dto);
     }
 
     /**
@@ -74,6 +79,10 @@ public class BookInfoDaoImpl extends BaseDao implements BookInfoDao  {
     	return update("bookInfo.updateBook", b0202Dto);
     }
 
+    public int updateBooks(B0302Dto b0302Dto) {
+    	return update("bookInfo.updateBooks", b0302Dto);
+    }
+
     /**
      * <p>[概 要] loginIDで条件を絞り込みBook情報を検索する。</p>
      * <p>[詳 細] </p>
@@ -85,9 +94,11 @@ public class BookInfoDaoImpl extends BaseDao implements BookInfoDao  {
     	return delete("bookInfo.deleteBook", b0202Dto);
     }
 
+    public int deleteBooks(B0302Dto b0302Dto) {
+    	return delete("bookInfo.deleteBooks", b0302Dto);
+    }
+
 	public List<BookInfo> selectBooks(B0301CondDto condDto) {
 		return (List<BookInfo>)queryForList("bookInfo.selectBooksB3",condDto);
 	}
-
 }
-

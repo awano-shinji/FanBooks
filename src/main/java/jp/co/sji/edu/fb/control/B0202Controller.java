@@ -37,6 +37,7 @@ public class B0202Controller extends AbstractBaseController {
      * 画面初期化モード:singleBook
      */
     public static final String SINGLEBOOK_MODE = "singleBook";
+    public static final String REG_MODE = "reg";
 
     /**
      * B0202サービス
@@ -49,7 +50,9 @@ public class B0202Controller extends AbstractBaseController {
      * <p>[概 要] 画面初期化情報の取得処理。</p>
      * <p>[詳 細] </p>
      * <p>[備 考] </p>
-     * @param modeType データモデル
+     * @param
+
+ データモデル
      * @param model データモデル
      * @param session セッション
      * @return 遷移先
@@ -80,7 +83,7 @@ public class B0202Controller extends AbstractBaseController {
         session.setAttribute(Constants.SESSION_B0201_LIST, b0201Dto);
         // 初期化処理を行う
         B0202Dto b0202Dto = new B0202Dto();
-        b0202Dto.setModeType(SINGLEBOOK_MODE);
+        b0202Dto.setModeType(REG_MODE);
         b0202Dto.setBookID(b0201Dto.getBookInfo().getBookID());
     	model.addAttribute(b0202Service.getInitInfo(true, b0202Dto));
         return "b0202";
@@ -180,7 +183,7 @@ public class B0202Controller extends AbstractBaseController {
     }
 
     /**
-     * <p>[概 要] 「Modify」ボタン押下の処理。</p>
+     * <p>[概 要] 「delete」ボタン押下の処理。</p>
      * <p>[詳 細] </p>
      * <p>[備 考] </p>
      * @param b0202Dto b0202Dto
@@ -197,6 +200,32 @@ public class B0202Controller extends AbstractBaseController {
             		session.getServletContext().getRealPath(""));
         } catch (BpException e) {
             // 例外発生する場合、画面情報を回復する。
+            handleError(b0202Dto);
+            model.addAttribute("buttonMode", "delete");
+            model.addAttribute(Constants.KEY_ERROR_MSG, e.getMessage());
+            return "b0202";
+        }
+        return "redirect:/b0201.do";
+    }
+
+    /**
+     * <p>[概 要] 「back」ボタン押下の処理。</p>
+     * <p>[詳 細] </p>
+     * <p>[備 考] </p>
+     * @param b0202Dto b0202Dto
+     * @param model データモデル
+     * @param session セッション
+     * @return 遷移先
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/back")
+    public String processBack(B0202Dto b0202Dto, Model model,
+            HttpSession session) {
+        try {
+        	// Bookを削除する
+            b0202Service.deleteBook(b0202Dto,
+            		session.getServletContext().getRealPath(""));
+        } catch (BpException e) {
+            // 例外発生する場合、画面情報を回復する
             handleError(b0202Dto);
             model.addAttribute("buttonMode", "delete");
             model.addAttribute(Constants.KEY_ERROR_MSG, e.getMessage());

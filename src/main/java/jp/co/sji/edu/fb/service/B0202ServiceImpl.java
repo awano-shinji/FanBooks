@@ -73,6 +73,7 @@ public class B0202ServiceImpl implements B0202Service {
         if (hasIdFlg) {
         	//特定なBookの場合
         	BookInfo book = bookInfoDao.selectBookByID(b0202Dto.getBookID());
+
         	b0202Dto.setCategoryID(book.getCategoryID());
         	b0202Dto.setBookTitle(book.getBookTitle());
         	b0202Dto.setAuthor(book.getAuthor());

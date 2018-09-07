@@ -39,7 +39,7 @@ public interface B0202Service {
      * @param b0202Dto b0202Dto対象
      */
     void updateBook(B0202Dto b0202Dto);
-    
+
     /**
      * <p>[概 要] Book情報を削除する。</p>
      * <p>[詳 細] </p>
@@ -47,7 +47,7 @@ public interface B0202Service {
      * @param b0202Dto b0202Dto対象
      */
     void deleteBook(B0202Dto b0202Dto, String contentPath);
-    
+
     /**
      * <p>[概 要] ファイルのアップロード</p>
      * <p>[詳 細] </p>
@@ -55,5 +55,5 @@ public interface B0202Service {
      * @param b0202Dto b0202Dto, String contentPath
      */
     String fileUpload(B0202Dto b0202Dto, String contentPath);
-    
+
 }

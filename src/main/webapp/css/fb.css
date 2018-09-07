@@ -1,0 +1,594 @@
+@charset "utf-8";
+
+/* ****************************************************************************
+CSS Information
+
+Site URL:	http://
+File name:	style.css(http://)
+Summary:	共通（ヘッダー、フッターなど）
+Created:	2010-11
+Order of description
+
+******************************************************************************* */
+*{
+font-family:verdana, arial, geneva, sans-serif;
+font-size:10pt;
+margin:0;
+padding:0;
+list-style:none;
+}
+
+/* reset */
+html {
+	overflow-y: scroll;
+}
+body,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,textarea,p,blockquote,th,td {
+	margin: 1;
+	padding: 1;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style: normal;
+}
+
+input,select,textarea {
+width:100%;
+}
+
+textarea {
+text-align:left;
+table-layout:fixed;
+word-wrap:break-word;
+}
+
+img{
+border:none;
+}
+
+
+
+body{
+background:#FFFFFF;
+
+border-bottom:none
+text-align:left;
+text-decoration:none;
+color:#333333;
+line-height:1;
+
+}
+
+
+#popup {
+background:#FFFFFF;
+border-bottom:none
+text-align:left;
+text-decoration:none;
+color:#333333;
+line-height:1;
+
+}
+
+/* ---------------------------------------------
+	_ Main Title
+------------------------------------------------*/
+.mainTitle {
+background:url(../img/fbooks/title.jpg) ;
+width:950px;
+*width:960px;
+height:110px;
+background-repeat:no-repeat;
+background-position:center;
+background-color:#ffffff;
+}
+
+.login {
+background:url(../img/fbooks/bookshelf.jpg) ;
+width:950px;
+*width:960px;
+height:180px;
+background-repeat:no-repeat;
+}
+/* --------------------------------------------------------
+	__#footer
+-------------------------------------------------------- */
+
+#footer {
+	height:15px;
+width:100%;
+background:url(../img/fbooks/footerbk.gif) no-repeat left;
+}
+
+/* --------------------------------------------------------
+	__#header
+-------------------------------------------------------- */
+#head{
+clear: both
+position:absolute;
+height:35px;
+width:100%;
+background:url(../img/fbooks/headbk1.jpg) no-repeat top left;
+}
+
+#head #fl_menu{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:200px;
+	height:30px;
+	z-index:999;
+}
+
+
+#head #fl_menu #menu {
+	position:absolute;
+	bottom:5px; left:10px;
+	color:#6d1818;
+	}
+
+/* --------------------------------------------------------
+	__#entries
+-------------------------------------------------------- */
+#entries {
+	width: 985px;
+	margin: 1;
+	padding: 1;
+}
+
+#inBody {
+width: 985px;
+height: 350px;
+overFlow:auto;
+}
+
+/* --------------------------------------------------------
+	__#bookshow   2013.06 uyo.tatsumi
+-------------------------------------------------------- */
+#bookshow {
+	width: 700px;
+	height: 400px;
+	margin: 1;
+	padding: 1;
+}
+
+.bookcontent {
+	width: 680px;
+	height: 400px;
+	margin: 1;
+	padding: 1;
+	top: -20px;
+}
+
+.bookcontent h1 {
+	font-size: 18px;
+}
+
+.bookcontent td{
+	overflow:auto
+}
+
+#showmenu ul{
+  list-style: none;
+}
+#showmenu li{
+  display: inline;
+  font: 15px arial,sans-serif;
+  color:#ffffff;
+  border:1px solid black;
+  background-color:#993333;
+  vertical-align: middle;
+  height: 22px;
+}
+
+.showmenu_li{
+  color:#ffffff;
+}
+
+
+/* --------------------------------------------------------
+	__#subNavi Menu用
+-------------------------------------------------------- */
+.T_iframe{
+    position:absolute;
+    top:0px;
+    left:5px;
+	width: 205px;
+	height: 100%;
+	display:block;
+	border:0;
+	z-index:-1;
+}
+
+#subNavi {
+    position:absolute;
+    float: left;
+    top:30px;
+    left:5px;
+	width: 200px;
+	*height: 100%;
+	background-color: #FFF;
+	display:none;
+	z-index:999;
+}
+
+#subNavi ul.acc {
+	width: 200px;;
+	margin: 0 0 10px 0;
+	padding: 0;
+	border: 1px solid #b1c5db;
+	font-size:96%;
+}
+
+#subNavi ul.acc li.info {
+	margin: 0;
+	padding: 0;
+	text-indent: 3px;
+	text-align:left;
+}
+
+#subNavi ul.acc li.open {
+	margin: 0;
+	padding: 0;
+	text-indent: 6px;
+	text-align:left;
+}
+
+#subNavi ul.acc li p {
+	display: block;
+	height: 22px;
+	margin: 0;
+	padding-top: 6px;
+	color: #6d1818;
+	font-weight:bold;
+	background: url(../img/subNavi_bg.gif) left top repeat-x;
+}
+
+#subNavi ul.acc a {
+	display: block;
+	height: 22px;
+	margin: 0;
+	padding-top: 6px;
+	color: #6d1818;
+}
+
+ul.acc li.info {
+	margin: 0;
+	padding:0;
+	padding: 2px 0;
+	background: none;
+
+}
+
+
+
+/* メニュー子項目 */
+#subNavi ul.acc ul {
+	width: 200px;;
+	border: none;
+	margin: 0 0 10px 0;
+	padding: 0 0 0 0;
+	font-size: 90%;
+	font-weight: normal;
+}
+
+#subNavi ul.acc ul li {
+	margin: 0;
+	padding-bottom: 0;
+	background: none;
+	border: none;
+}
+
+#subNavi ul.acc ul a {
+	margin: 0;
+	padding:0;
+	height: 16px;
+	padding: 2px 0;
+	background: none;
+	color: #6d1818;
+	font-size: 90%;
+}
+
+#subNavi ul.acc ul a:hover {
+	display: block;
+	height: 16px;
+	padding-top: 2px;
+	text-decoration: none;
+	background-color: #e1edf5;
+}
+
+
+ul.acc li.lefttitle
+{
+font-family:verdana,arial;
+font-weight:bold;
+font-size:10pt;
+color:#6d1818;
+}
+
+ul.acc li.leftsubtitle
+{
+font-family:verdana,arial;
+font-weight:normal;
+font-size:10pt;
+color:#666633;
+word-wrap: break-word;
+}
+
+ul.acc li.leftcompany
+{
+font-family:verdana,arial;
+font-weight:bold;
+font-size:8pt;
+color:#666633;
+}
+
+/* メニューopen時 */
+ul.acc li.open a {
+	text-decoration:none;
+}
+
+
+/* --------------------------------------------------------
+	__#table用
+-------------------------------------------------------- */
+
+
+table .input,.list  {
+	width: 100%;
+	border-top: 1px solid #b1c5db;
+	border-collapse: separate;
+	border-spacing: 0;
+	text-align: left;
+	border-collapse:collapse;
+    table-layout:fixed;
+}
+
+table .inner  {
+	width: 100%;
+	table-layout:fixed;
+	*border: 1px solid #b1c5db;
+	border-spacing: 1;
+	text-align: left;
+	*border-collapse:collapse;
+}
+
+html:not([lang*=""]) table.inner {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-top: 1px solid #b1c5db;
+	border-left: 1px solid #b1c5db;
+}
+
+table .innerDelivery  {
+    table-layout:fixed;
+}
+
+table .inner th {
+	padding: 3px 5px 1px 5px;
+	vertical-align: center;
+	background: #91c2f4;
+	*border:1px solid #b1c5db;
+	text-align:center;
+}
+
+table .inner td {
+	padding: 3px 5px 1px 5px;
+	vertical-align: center;
+	background: #FFF;
+	*border:1px solid #b1c5db;
+}
+
+html:not([lang*=""]) table.inner th,table.inner td{
+	border-bottom: 1px solid #b1c5db;
+	border-right: 1px solid #b1c5db
+}
+
+table .input td {
+	padding: 3px 5px 1px 5px;
+}
+
+table td .orderLabel {
+	font-size: 10pt;
+	font-weight: bold;
+	text-align:right;
+	padding: 3px 5px 1px 5px;
+}
+
+table td .orderComment {
+	font-size: 10pt;
+	font-weight: bold;
+	text-align:left;
+	padding: 3px 5px 1px 5px;
+	background: #eeeeff;
+	border-bottom: 1px solid #b1c5db;
+}
+
+table .list thead td {
+	padding: 3px 5px 1px 5px;
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+	border-left: 1px solid #FFF;
+	vertical-align: top;
+	background: #D5F7F7;
+	border:1px solid #b1c5db;
+}
+
+
+table .list td {
+	padding: 3px 5px 1px 5px;
+	border-top: 1px solid #FFF;
+	border-right: none;
+	border-bottom: none;
+	border-left: 1px solid #FFF;
+	vertical-align: top;
+	background: #FFF;
+	border:1px solid #b1c5db;
+}
+
+table.wrapper {
+	border: 1px solid #b1c5db;
+	cellspacing:0;
+	cellpadding:0;
+	width:100%;
+}
+
+table.listwrapper {
+	border: 1px solid #b1c5db;
+	cellspacing:0;
+	cellpadding:0;
+		width:985px;
+}
+
+table .odd td {
+	background: #F4F4F4;
+}
+
+table.tablesorter tbody tr.lastest td {
+	color: blue;
+  word-wrap: break-word;
+}
+
+table.list {
+	border: 1px solid #b1c5db;
+}
+
+.subTitle{
+	color: white;
+	background-color: #75aee8;
+	font-size: 12pt;
+	font-weight: bold;
+	text-align:left;
+}
+
+.subHistoryTitle{
+	color: white;
+	background-color: #8d8a45;
+	font-size: 12pt;
+	font-weight: bold;
+	text-align:left;
+}
+
+table td .label{
+
+   text-align:right;
+	padding-right: 0px;
+
+}
+
+table td .heading{
+	background-color: #CDCDCD;
+}
+
+table td .orderHeading{
+	background-color: #CDCDCD;
+	font-weight: bold;
+}
+
+table td .3Dmessagebold{
+	font-weight: bold;
+
+}
+
+table.tablesorter {
+	table-layout:fixed;
+}
+
+table.tablesorter thead th {
+	background-color: #91c2f4;
+	border: 1px solid #CDCDCD;
+	font-size: 8pt;
+	padding: 4px;
+}
+
+table.tablesorter thead.history th {
+	background-color: #a7a77a;
+	border: 1px solid #CDCDCD;
+	font-size: 8pt;
+	padding: 4px;
+}
+
+/* --------------------------------------------------------
+	__#Other
+-------------------------------------------------------- */
+.mustinput {
+	background-color: #8dbdd8;
+}
+
+.mustinputlabel {
+   text-align:right;
+	padding-right: 15px;
+	color: red;
+	font-weight: bold;
+}
+
+.mustorderLabel {
+	color: red;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align:right;
+	padding: 3px 5px 1px 5px;
+}
+
+.break-word {
+  word-wrap: break-word;
+  delimiter:-;
+  text-align:center;
+}
+
+.break-word-odd {
+  word-wrap: break-word;
+  delimiter:-;
+  text-align:center;
+  background-color: white;
+}
+
+.left-break-word {
+  word-wrap: break-word;
+  word-break:break-all;
+  text-align:left;
+  delimiter:-;
+}
+
+.favorite {
+	color:#91c2f4;
+	background:#D5F7F7;
+	border:1px solid #91c2f4;
+}
+
+.listwrapper a {
+color:red;
+}
+
+.comment {
+font-size:7pt;
+}
+
+LEGEND {
+color: black;
+}
+
+.relateClass{
+            width:100%;
+        }
+
+.relateAgentClass{
+            width:80%;
+        }
+
+.buttonstyle{width:50px;height:50px;}
+
+.refItemMode{
+      background-color: #E5F1FF
+        }
+
+.row_selected td {
+    background-color: #B0BED9;
+}
+
+.myFavorite td, .myFavorite td {
+    margin: 0;
+    padding: 0;
+}
+.myFavorite input {
+	height:25px;
+}

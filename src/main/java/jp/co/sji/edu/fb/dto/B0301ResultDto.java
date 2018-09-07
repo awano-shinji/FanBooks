@@ -55,6 +55,45 @@ public class B0301ResultDto extends BookInfo {
      */
     private Timestamp lastUpdate;
 
+    /**
+     * Author
+     */
+    private String author;
+
+    /**
+     * Publisher
+     */
+    private String publisher;
+
+    /**
+     * Description
+     */
+    private String description;
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getBookID() {
 		return bookID;
 	}
@@ -110,8 +149,4 @@ public class B0301ResultDto extends BookInfo {
 	public void setLastUpdate(Timestamp lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-
-
-
 }
-

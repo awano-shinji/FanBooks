@@ -54,6 +54,11 @@ public class Constants {
 	public static final String SESSION_B0201_LIST = "B0201";
 
 	/**
+	 * セッションキー：B0301検索一覧条件
+	 */
+	public static final String SESSION_B0301_LIST = "B0301";
+
+	/**
 	 * セッションキー：P0101_COND検索一覧条件
 	 */
 	public static final String SESSION_P0101_COND = "P0101_COND";

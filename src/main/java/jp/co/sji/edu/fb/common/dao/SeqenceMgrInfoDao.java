@@ -2,7 +2,7 @@ package jp.co.sji.edu.fb.common.dao;
 
 
 /**
- * <p>[概 要] SeqenceMgrInfoのDAOのインタフェース。</p>
+ * <p>[概 要] SeqenceInfoのDAOのインタフェース。</p>
  * <p>[詳 細] </p>
  * <p>[備 考] </p>
  * <p>Copyright(c) .</p>
